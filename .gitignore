@@ -1,0 +1,6 @@
+/target
+.devenv
+.direnv
+.idea/
+.env
+test.db
