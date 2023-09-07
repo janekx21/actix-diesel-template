@@ -6,9 +6,11 @@
 #[macro_use]
 extern crate diesel;
 
-use actix_web::{error, get, middleware, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{error, get, middleware, post, web, App, HttpResponse, HttpServer, Responder, put};
 use diesel::{prelude::*, r2d2};
+use diesel::query_dsl::methods::OffsetDsl;
 use uuid::Uuid;
+use crate::actions::update_plant_humidity;
 
 mod actions;
 mod models;
@@ -22,61 +24,80 @@ async fn get_hello_world() -> impl Responder {
     HttpResponse::Ok().body("Hello bridgefield!")
 }
 
-/// Finds user by UID.
+/// Finds plant by UID.
 ///
 /// Extracts:
 /// - the database pool handle from application data
-/// - a user UID from the request path
-#[get("/user/{user_id}")]
-async fn get_user(
+/// - a plant UID from the request path
+#[get("/plant/{plant_id}")]
+async fn get_plant(
     pool: web::Data<DbPool>,
-    user_uid: web::Path<Uuid>,
+    plant_uid: web::Path<Uuid>,
 ) -> actix_web::Result<impl Responder> {
-    let user_uid = user_uid.into_inner();
+    let plant_uid = plant_uid.into_inner();
 
     // use web::block to offload blocking Diesel queries without blocking server thread
-    let user = web::block(move || {
+    let plant = web::block(move || {
         // note that obtaining a connection from the pool is also potentially blocking
         let mut conn = pool.get()?;
 
-        actions::find_user_by_uid(&mut conn, user_uid)
+        actions::find_plant_by_uid(&mut conn, plant_uid)
     })
     .await?
     // map diesel query errors to a 500 error response
     .map_err(error::ErrorInternalServerError)?;
 
-    Ok(match user {
-        // user was found; return 200 response with JSON formatted user object
-        Some(user) => HttpResponse::Ok().json(user),
+    Ok(match plant {
+        // plant was found; return 200 response with JSON formatted plant object
+        Some(plant) => HttpResponse::Ok().json(plant),
 
-        // user was not found; return 404 response with error message
-        None => HttpResponse::NotFound().body(format!("No user found with UID: {user_uid}")),
+        // plant was not found; return 404 response with error message
+        None => HttpResponse::NotFound().body(format!("No plant found with UID: {plant_uid}")),
     })
 }
 
-/// Creates new user.
+/// Creates new plant.
 ///
 /// Extracts:
 /// - the database pool handle from application data
-/// - a JSON form containing new user info from the request body
-#[post("/user")]
-async fn add_user(
+/// - a JSON form containing new plant info from the request body
+#[post("/plant")]
+async fn add_plant(
     pool: web::Data<DbPool>,
-    form: web::Json<models::NewUser>,
+    form: web::Json<models::NewPlant>,
 ) -> actix_web::Result<impl Responder> {
     // use web::block to offload blocking Diesel queries without blocking server thread
-    let user = web::block(move || {
+    let plant = web::block(move || {
         // note that obtaining a connection from the pool is also potentially blocking
         let mut conn = pool.get()?;
 
-        actions::insert_new_user(&mut conn, &form.name)
+        actions::insert_new_plant(&mut conn, &form.name)
     })
     .await?
     // map diesel query errors to a 500 error response
     .map_err(error::ErrorInternalServerError)?;
 
-    // user was added successfully; return 201 response with new user info
-    Ok(HttpResponse::Created().json(user))
+    // plant was added successfully; return 201 response with new plant info
+    Ok(HttpResponse::Created().json(plant))
+}
+
+#[post("/plant/{plant_id}/humidity")]
+async fn set_humidity(
+    pool: web::Data<DbPool>,
+    plant_id: web::Path<Uuid>,
+    data: web::Json<models::Humidity>,
+) -> actix_web::Result<impl Responder> {
+    let plant_id = plant_id.into_inner();
+    println!("{}", plant_id);
+    web::block(move || {
+        let mut conn = pool.get()?;
+        actions::update_plant_humidity(&mut conn, plant_id, data.humidity)
+    })
+        .await?
+        .map_err(error::ErrorInternalServerError)?;
+
+
+    Ok(HttpResponse::Ok())
 }
 
 #[actix_web::main]
@@ -96,9 +117,10 @@ async fn main() -> std::io::Result<()> {
             // add request logger middleware
             .wrap(middleware::Logger::default())
             // add route handlers
-            .service(get_user)
-            .service(add_user)
+            .service(get_plant)
+            .service(add_plant)
             .service(get_hello_world)
+            .service(set_humidity)
     })
     .bind(("127.0.0.1", 8081))?
     .run()
@@ -123,7 +145,7 @@ mod tests {
     use super::*;
 
     #[actix_web::test]
-    async fn user_routes() {
+    async fn plant_routes() {
         dotenv::dotenv().ok();
         env_logger::try_init_from_env(env_logger::Env::new().default_filter_or("info")).ok();
 
@@ -133,13 +155,13 @@ mod tests {
             App::new()
                 .app_data(web::Data::new(pool.clone()))
                 .wrap(middleware::Logger::default())
-                .service(get_user)
-                .service(add_user),
+                .service(get_plant)
+                .service(add_plant),
         )
         .await;
 
-        // send something that isn't a UUID to `get_user`
-        let req = test::TestRequest::get().uri("/user/123").to_request();
+        // send something that isn't a UUID to `get_plant`
+        let req = test::TestRequest::get().uri("/plant/123").to_request();
         let res = test::call_service(&app, req).await;
         assert_eq!(res.status(), StatusCode::NOT_FOUND);
         let body = test::read_body(res).await;
@@ -148,37 +170,37 @@ mod tests {
             "unexpected body: {body:?}",
         );
 
-        // try to find a non-existent user
+        // try to find a non-existent plant
         let req = test::TestRequest::get()
-            .uri(&format!("/user/{}", Uuid::nil()))
+            .uri(&format!("/plant/{}", Uuid::nil()))
             .to_request();
         let res = test::call_service(&app, req).await;
         assert_eq!(res.status(), StatusCode::NOT_FOUND);
         let body = test::read_body(res).await;
         assert!(
-            body.starts_with(b"No user found"),
+            body.starts_with(b"No plant found"),
             "unexpected body: {body:?}",
         );
 
-        // create new user
+        // create new plant
         let req = test::TestRequest::post()
-            .uri("/user")
-            .set_json(models::NewUser::new("Test user"))
+            .uri("/plant")
+            .set_json(models::NewPlant::new("Test plant"))
             .to_request();
-        let res: models::User = test::call_and_read_body_json(&app, req).await;
-        assert_eq!(res.name, "Test user");
+        let res: models::Plant = test::call_and_read_body_json(&app, req).await;
+        assert_eq!(res.name, "Test plant");
 
-        // get a user
+        // get a plant
         let req = test::TestRequest::get()
-            .uri(&format!("/user/{}", res.id))
+            .uri(&format!("/plant/{}", res.id))
             .to_request();
-        let res: models::User = test::call_and_read_body_json(&app, req).await;
-        assert_eq!(res.name, "Test user");
+        let res: models::Plant = test::call_and_read_body_json(&app, req).await;
+        assert_eq!(res.name, "Test plant");
 
-        // delete new user from table
-        use crate::schema::users::dsl::*;
-        diesel::delete(users.filter(id.eq(res.id)))
+        // delete new plant from table
+        use crate::schema::plants::dsl::*;
+        diesel::delete(plants.filter(id.eq(res.id)))
             .execute(&mut pool.get().expect("couldn't get db connection from pool"))
-            .expect("couldn't delete test user from table");
+            .expect("couldn't delete test plant from table");
     }
 }

@@ -4,6 +4,7 @@ version = "1.0.0"
 edition = "2021"
 
 [dependencies]
+diesel-derive-enum = { version = "2", features = ["sqlite"] }
 actix-web = "4.4.0"
 # actix-web.workspace = true
 diesel = { version = "2", features = ["sqlite", "r2d2"] }
