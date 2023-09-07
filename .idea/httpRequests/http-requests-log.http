@@ -1,0 +1,582 @@
+POST http://localhost:3030/plants/Pflanziska
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+<> 2023-09-07T164909.200.json
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Klo",
+  "plants": [
+    {
+      "name": "Pflanziska",
+      "humidity": 0
+    }
+  ]
+}
+
+<> 2023-09-07T164906.200.json
+
+###
+
+POST http://localhost:3030/plants/Pflanziska
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+<> 2023-09-07T164728.200.json
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Klo",
+  "plants": [
+    {
+      "name": "Pflanziska",
+      "humidity": 0
+    }
+  ]
+}
+
+<> 2023-09-07T164726.200.json
+
+###
+
+POST http://localhost:3030/plants/Pflanziska
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+<> 2023-09-07T164600.200.json
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Klo",
+  "plants": [
+    {
+      "name": "Pflanziska",
+      "humidity": 0
+    }
+  ]
+}
+
+<> 2023-09-07T164558.200.json
+
+###
+
+POST http://localhost:3030/plants/Pflanziska
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+<> 2023-09-07T164554.200.json
+
+###
+
+POST http://localhost:3030/plants
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/plants/Pflanziska
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/plants/asd
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/plants/
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/plants/Pflanziska/
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/rooms/plants/Pflanziska/
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Klo",
+  "plants": [
+    {
+      "name": "Pflanziska",
+      "humidity": 0
+    }
+  ]
+}
+
+<> 2023-09-07T164227.200.json
+
+###
+
+POST http://localhost:3030/rooms/plants/Pflanziska/
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/plants/Pflanziska/
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Klo",
+  "plants": [
+    {
+      "name": "Pflanziska",
+      "humidity": 0
+    }
+  ]
+}
+
+<> 2023-09-07T163947.200.json
+
+###
+
+POST http://localhost:3030/plants/Pflanziska/
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/plants/Pflanziska
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 123
+}
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Klo",
+  "plants": [
+    {
+      "name": "Pflanziska",
+      "humidity": 0
+    }
+  ]
+}
+
+<> 2023-09-07T163816.200.json
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 77
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Klo",
+  "plants": [
+    {
+      "name": "Pflanziska"
+    }
+  ]
+}
+
+<> 2023-09-07T163802.400.txt
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 77
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Klo",
+  "plants": [
+    {
+      "name": "Pflanziska"
+    }
+  ]
+}
+
+<> 2023-09-07T161125.200.json
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Hub",
+  "plants": [
+    {
+      "name": "Günther"
+    }
+  ]
+}
+
+<> 2023-09-07T160937.200.json
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Hub",
+  "plants": [
+    {
+      "name": "Günther"
+    }
+  ]
+}
+
+<> 2023-09-07T160824.200.json
+
+###
+
+POST http://localhost:3030/rooms
+Accept: application/json
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Günther"
+}
+
+<> 2023-09-07T160747.400.txt
+
+###
+
+POST http://localhost:3030/room
+Accept: application/json
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Günther"
+}
+
+###
+
+POST http://localhost:3030/room
+Accept: application/json
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Günther"
+}
+
+###
+
+POST http://localhost:8081/plant/44fa0dd9-cb1c-4191-ad60-144316091467/humidity
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 0.5
+}
+
+###
+
+POST http://localhost:8081/plant/44fa0dd9-cb1c-4191-ad60-144316091467/humidity
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 0.5
+}
+
+###
+
+POST http://localhost:8081/plant/44fa0dd9-cb1c-4191-ad60-144316091467/humidity
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 0.5
+}
+
+###
+
+POST http://localhost:8081/plant/44fa0dd9-cb1c-4191-ad60-144316091467/humidity
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 0.5
+}
+
+###
+
+POST http://localhost:8081/plant/44fa0dd9-cb1c-4191-ad60-144316091467/humidity
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 0.5
+}
+
+###
+
+POST http://localhost/plant/44fa0dd9-cb1c-4191-ad60-144316091467/humidity
+Accept: application/json
+Content-Type: application/json
+Content-Length: 21
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "humidity": 0.5
+}
+
+<> 2023-09-07T144510.404.html
+
+###
+
+POST http://localhost:8081/plant
+Accept: application/json
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Günther"
+}
+
+<> 2023-09-07T113306.201.json
+
+###
+
+POST http://localhost:8081/plant
+Accept: application/json
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "Günther"
+}
+
+<> 2023-09-07T112727.500.txt
+
+###
+
